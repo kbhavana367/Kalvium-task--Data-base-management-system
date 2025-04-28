@@ -1,0 +1,99 @@
+Question 1
+What is a database transaction? (factual)
+
+A single operation performed on a database.
+A group of database operations treated as a single unit of work.
+A backup of the database.
+A query to retrieve data from the database.
+Explanation
+A transaction is defined as a group of database operations (reading, writing, updating, deleting) that are treated as a single, indivisible unit, ensuring that either all operations succeed or none do. Therefore, option 2 is the accurate definition. Options 1, 3, and 4 are incorrect as they describe individual actions or processes separate from the concept of a transaction.
+
+Question 2
+Which of the following is NOT an ACID property? (factual)
+
+Atomicity
+Consistency
+Isolation
+Velocity
+Explanation
+ACID properties stand for Atomicity, Consistency, Isolation, and Durability. 'Velocity' is not one of the ACID properties. Therefore, the correct answer is option 4. Options 1, 2, and 3 are all part of ACID.
+
+Question 3
+True or False: Atomicity ensures that a transaction is treated as a single, indivisible unit of work. (trueFalse)
+
+True
+False
+Maybe
+Not Sure
+Explanation
+Atomicity guarantees that a transaction is treated as a single, indivisible unit of work, where either all changes are applied, or none are. Therefore, the correct answer is 'True'.
+
+Question 4
+Match the ACID property with its description: (conceptual)
+
+1-Atomicity, 2-Consistency, 3-Isolation, 4-Durability. A-Ensures data remains consistent after the transaction., B-Guarantees transaction, changes are permanent., C-Ensures transactions don't interfere., D-All or nothing transaction.
+1-Atomicity, 2-Consistency, 3-Isolation, 4-Durability. A-Ensures transactions don't interfere., B-All or nothing transaction., C-Guarantees transaction changes are permanent., D-Ensures data remains consistent after the transaction.
+1-Atomicity, 2-Consistency, 3-Isolation, 4-Durability. A-All or nothing transaction., B-Ensures data remains consistent after the transaction., C-Ensures transactions don't interfere., D-Guarantees transaction changes are permanent.
+1-Atomicity, 2-Consistency, 3-Isolation, 4-Durability. A-Guarantees transaction changes are permanent., B-Ensures transactions don't interfere., C-Ensures data remains consistent after the transaction., D-All or nothing transaction.
+Explanation
+Atomicity is 'All or nothing transaction', Consistency ensures data remains consistent after the transaction, Isolation ensures transactions don't interfere, and Durability guarantees transaction changes are permanent. Therefore, option 3 has the correct mapping.
+
+Question 5
+In a banking system, if a transaction transfers money from account A to account B, which ACID property ensures that the money is either fully transferred or not at all, preventing a situation where money is debited from A but not credited to B? (application)
+
+Consistency
+Isolation
+Durability
+Atomicity
+Explanation
+Atomicity ensures that a transaction is treated as a single unit, meaning all changes either happen together or not at all. In this scenario, atomicity ensures the complete transfer of funds or no transfer at all. Consistency ensures the database remains in a valid state, Isolation keeps transactions separate, and Durability ensures changes are permanent.
+
+Question 6
+Why is isolation important in database transactions? (conceptual)
+
+To ensure data is permanently stored.
+To prevent transactions from interfering with each other.
+To guarantee all parts of a transaction are completed.
+To maintain data accuracy.
+Explanation
+Isolation is important because it ensures that multiple transactions can occur simultaneously without interfering with each other, preventing conflicts and data corruption. The other options describe Durability, Atomicity, and Consistency, respectively.
+
+Question 7
+Which of the following is the role of 'Consistency' in ACID properties? (conceptual)
+
+Ensuring that concurrent transactions do not affect each other.
+Ensuring that once a transaction is committed, it cannot be rolled back.
+Ensuring that a transaction takes the database from one valid state to another.
+Ensuring that all operations within a transaction are completed successfully.
+Explanation
+Consistency ensures that a transaction takes the database from one valid state to another, following all defined rules and constraints. The other options describe Isolation, Durability and Atomicity.
+
+Question 8
+Consider a scenario where a system crashes immediately after a 'COMMIT' operation. Which ACID property ensures that the committed transaction's data changes are not lost? (analytical)
+
+Atomicity
+Consistency
+Isolation
+Durability
+Explanation
+Durability guarantees that once a transaction is committed, the changes are permanent and will survive system failures such as crashes or power outages. Therefore, the correct answer is Durability. Atomicity, Consistency and Isolation do not serve this fuction.
+
+Question 9
+In a concurrent database environment, two transactions, T1 and T2, are executing simultaneously. T1 reads a data item 'X' and then T2 updates 'X'. If T1 then re-reads 'X', which isolation level would prevent T1 from seeing the updated value of 'X' written by T2, thus ensuring repeatable reads? (analytical)
+
+Read Uncommitted
+Read Committed
+Repeatable Read
+Serializable
+Explanation
+The 'Repeatable Read' isolation level guarantees that if a transaction reads a data item, subsequent reads of that same data item within the same transaction will return the same value, preventing non-repeatable reads. Read Committed would allow T1 to see T2's changes, Read Uncommitted offers no guarantees, and Serializable provides the highest level of isolation but is not strictly necessary to prevent non-repeatable reads in this specific scenario.
+
+Question 10
+Fill in the blank: In SQLite, to ensure that changes are written to a log file first for potential recovery in case of a crash, you can use _____. (implementation-based)
+
+Regular Backups
+Write-Ahead Logging (WAL)
+Rollback mechanism
+Commit command
+Explanation
+Write-Ahead Logging (WAL) is a technique where changes are written to a log file before being applied to the database file, aiding in recovery in case of crashes. While regular backups are also important, WAL specifically addresses immediate recovery. Rollback mechanism and commit commands are for transaction management, not crash recovery.
