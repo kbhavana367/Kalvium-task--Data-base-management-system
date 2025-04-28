@@ -1,0 +1,99 @@
+Question 1
+Which normal form does 2NF build upon? (factual)
+
+0NF
+1NF
+3NF
+BCNF
+Explanation
+2NF builds upon 1NF by addressing partial dependencies. It requires that a table already be in 1NF before it can be in 2NF.
+
+Question 2
+True or False: A table in 2NF can have repeating groups. (trueFalse)
+
+True
+False
+Not applicable
+Sometimes
+Explanation
+False. A table in 2NF must already be in 1NF, which means it cannot have repeating groups.
+
+Question 3
+What is the primary goal of 2NF? (conceptual)
+
+To eliminate all redundancy
+To eliminate partial dependencies
+To eliminate transitive dependencies
+To ensure data is in a specific format
+Explanation
+The primary goal of 2NF is to eliminate partial dependencies, where a non-key attribute depends on only part of the primary key.
+
+Question 4
+Match the following anomaly with its description: Update Anomaly (match the following)
+
+Inability to add data without other information
+Data is unnecessarily repeated
+Changes to data require multiple updates
+Loss of data occurs when deleting other data
+Explanation
+Update anomaly refers to the situation where changes to a single piece of information require updates to multiple rows in a table, potentially leading to inconsistencies.
+
+Question 5
+In the table `EmployeeSkills (EmployeeID, SkillID, SkillName)`, which dependency indicates a violation of 2NF? (application)
+
+EmployeeID -> SkillID
+SkillID -> SkillName
+(EmployeeID, SkillID) -> SkillName
+EmployeeID -> SkillName
+Explanation
+SkillID -> SkillName indicates that the SkillName depends only on the SkillID, a part of the composite primary key (EmployeeID, SkillID), thus violating 2NF.
+
+Question 6
+Which of the following is a consequence of not addressing partial dependencies? (conceptual)
+
+Reduced redundancy
+Improved data consistency
+Insertion Anomalies
+Simplified queries
+Explanation
+Insertion anomalies are a direct consequence of not addressing partial dependencies. They occur when you cannot add new data without also adding data for other attributes.
+
+Question 7
+What is the purpose of decomposing a table when applying 2NF? (conceptual)
+
+To increase redundancy
+To remove partial dependencies
+To complicate queries
+To reduce the number of tables
+Explanation
+Decomposing a table in 2NF is done to remove partial dependencies, ensuring that all non-key attributes are fully functionally dependent on the entire primary key.
+
+Question 8
+Consider the following pseudo-code. What 2NF principle is demonstrated? (implementation-based)
+
+Creating a single table for all data
+Ensuring all tables have a primary key
+Separating data based on full functional dependency
+Avoiding the use of foreign keys
+Explanation
+The pseudo-code demonstrates separating data into different tables based on full functional dependency, which is the core principle of 2NF.
+
+Question 9
+Given a table `OrderItems(OrderID, ProductID, ProductName, Quantity)`. After applying 2NF, what table(s) would contain `ProductName`? (analytical)
+
+OrderItems only
+A separate Products table
+Both OrderItems and a separate Products table
+It would be removed entirely
+Explanation
+After applying 2NF, `ProductName` would be moved to a separate `Products` table, related to `OrderItems` via `ProductID`, to eliminate the partial dependency.
+
+Question 10
+Fill in the blank: In SQLite, to enforce the relationship between `OrderDetails` and `Products` after applying 2NF, you would use a ______ key constraint in `OrderDetails` referencing the `ProductID` in `Products`. (implementation-based)
+
+PRIMARY
+UNIQUE
+FOREIGN
+CHECK
+Explanation
+A FOREIGN key constraint is used to enforce the relationship between tables, ensuring that the `ProductID` in `OrderDetails` exists in the `Products` table.
