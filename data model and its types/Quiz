@@ -1,1 +1,99 @@
+Question 1
+Which of the following best describes a data model? (factual)
 
+A visual representation of how data is organized and related.
+A programming language used to create databases.
+A type of hardware used to store data.
+A software application for managing spreadsheets.
+Explanation
+A data model is a blueprint for organizing data. Other options are not correct because they refer to other aspects of data management, not the model itself.
+
+Question 2
+True or False: Data models are only useful for large enterprises, not small businesses. (trueFalse)
+
+True
+False
+Can not be determined.
+Sometimes true sometimes false.
+Explanation
+Data models are valuable for any organization that needs to manage data effectively, regardless of size. Proper data models reduces errors and enhances efficiency. Other options are not correct because they state or imply that data models are not useful for small businesses, which is incorrect.
+
+Question 3
+Which type of data model is considered a high-level overview, like a road trip map showing major cities and highways? (conceptual)
+
+Physical Data Model
+Logical Data Model
+Conceptual Data Model
+Relational Data Model
+Explanation
+The conceptual data model provides a simplified view of the data landscape, focusing on key entities and relationships, similar to a high-level road trip map. Other options are not correct because they represent more detailed or specific levels of data modeling.
+
+Question 4
+Match the data model type with its primary focus: 1. Conceptual, 2. Logical, 3. Physical; A. Database implementation, B. Business requirements, C. Attributes and relationships (application)
+
+1-A, 2-B, 3-C
+1-B, 2-C, 3-A
+1-C, 2-A, 3-B
+1-A, 2-C, 3-B
+Explanation
+Conceptual models focus on business requirements, logical models on attributes and relationships, and physical models on database implementation. Other options do not correctly pair the data model types with their primary focus.
+
+Question 5
+Which data model type specifies data types for attributes, such as 'Name is a String' or 'CustomerID is an Integer'? (intermediate conceptual)
+
+Conceptual Data Model
+Physical Data Model
+Logical Data Model
+Hierarchical Data Model
+Explanation
+The logical data model defines the attributes of each entity and assigns data types to them. Other options are not correct because they refer to different levels of data modeling or a different type of data model.
+
+Question 6
+An e-commerce website needs a data model to define how products, customers, and orders are related. Why is this important? (application)
+
+To ensure smooth transactions and accurate inventory management.
+To make the website visually appealing to customers.
+To reduce the amount of code needed for the website.
+To increase the website's ranking in search engine results.
+Explanation
+A well-defined data model ensures that the relationships between products, customers, and orders are clear, leading to smooth transactions and accurate inventory management. Other options may be benefits of a website, but they are not directly related to the importance of a data model.
+
+Question 7
+What is the primary purpose of a logical data model? (intermediate conceptual)
+
+To define the physical storage structures of the database.
+To provide a high-level overview of the data landscape.
+To define the attributes of each entity and the relationships between them more precisely.
+To optimize query performance.
+Explanation
+The logical data model builds upon the conceptual model by adding more detail, specifically defining attributes and relationships. Other options are not correct because they describe the purposes of other data model types.
+
+Question 8
+In a physical data model, what is the purpose of a foreign key? (implementation-based)
+
+To uniquely identify each row in a table.
+To link tables together and establish relationships.
+To specify the data type of a column.
+To enforce data integrity constraints.
+Explanation
+Foreign keys are used to establish relationships between tables by referencing the primary key of another table. Option 1 describes a primary key; option 3 describes a column property; option 4 is a broader concept.
+
+Question 9
+Consider a database schema with tables `Customers` and `Orders`. The `Orders` table has a column `CustomerID` that references the `Customers` table. What type of key is `CustomerID` in the `Orders` table? (advanced application)
+
+Primary Key
+Foreign Key
+Unique Key
+Composite Key
+Explanation
+`CustomerID` in the `Orders` table is a foreign key because it references the primary key of the `Customers` table, establishing a relationship between the two tables. Other options are not correct based on the context provided.
+
+Question 10
+You are designing a database for a library. Fill in the blank: In the physical data model, the `Books` table would have columns like `book_id` INT PRIMARY KEY, `title` VARCHAR(255), `author` VARCHAR(255), and ____ TEXT. (fill-in-the-blank code)
+
+`publication_date`
+`summary`
+`price`
+`quantity`
+Explanation
+A suitable column for a `Books` table, given the existing columns, would be `summary` to store a description of the book. Other options might be relevant, but `summary` provides essential information about the book's content.
