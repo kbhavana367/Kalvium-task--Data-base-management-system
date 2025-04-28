@@ -1,1 +1,115 @@
+What is the primary purpose of a data model? (factual)
 
+To organize and show how different pieces of data are connected.
+To write code for applications.
+To design user interfaces.
+To test software.
+Explanation
+Data models serve as blueprints for data, illustrating how data elements relate to each other, analogous to a house blueprint showing room connections. The other options are unrelated to the core function of a data model.
+
+Question 2
+True or False: Data models are only useful for tech experts and not for general understanding. (trueFalse)
+
+True
+False
+Maybe
+Can't Say
+Explanation
+Data models help everyone understand data, whether you're a tech expert or not, by providing a simple way to talk about data. Thus, the statement is false.
+
+Question 3
+Which of the following is a direct benefit of using data models? (factual)
+
+They help prevent mistakes by ensuring clarity and definition.
+They automatically generate code.
+They replace the need for databases.
+They eliminate the need for user input.
+Explanation
+Data models prevent mistakes by ensuring that all aspects of the data are clearly defined. The other options are incorrect as they describe unrelated or inaccurate functions.
+
+Question 4
+Match the data model type with its description:
+1. Conceptual Data Model
+2. Logical Data Model
+3. Physical Data Model
+A. Defines the database tables, columns, and keys
+B. Provides a high-level overview of entities and relationships
+C. Adds details about attributes, data types, and cardinality (application)
+
+1-A, 2-B, 3-C
+1-B, 2-C, 3-A
+1-C, 2-A, 3-B
+1-A, 2-C, 3-B
+Explanation
+The correct matching is:
+Conceptual (1) - High-level overview (B)
+Logical (2) - Adds details (C)
+Physical (3) - Defines tables, columns, and keys (A)
+
+Question 5
+In the context of ERDs, what is an 'attribute'? (conceptual)
+
+A connection between two entities.
+A characteristic or property of an entity.
+A visual representation of a database.
+A type of database management system.
+Explanation
+An attribute is a detail or characteristic of an entity, like 'Name' for a 'Person' entity. The other options describe different ERD components or database concepts.
+
+Question 6
+Which data model focuses on how the data will be stored in the database? (conceptual)
+
+Conceptual Data Model
+Logical Data Model
+Physical Data Model
+Abstract Data Model
+Explanation
+The Physical Data Model describes the database tables, columns, data types, keys, and relationships necessary to implement the data model in a specific DBMS.
+
+Question 7
+What does cardinality represent in a Logical Data Model? (conceptual)
+
+The number of attributes an entity can have.
+The type of data stored in an attribute.
+How many instances of one entity can be related to another entity.
+The primary key of a table.
+Explanation
+Cardinality specifies the number of instances of one entity that can (or must) be related to another entity. The other options refer to different aspects of data modeling.
+
+Question 8
+In a database schema for an online store, what would be the most appropriate data type for the 'Price' attribute of a 'Product' entity? (implementation-based)
+
+TEXT
+INTEGER
+BOOLEAN
+DECIMAL
+Explanation
+DECIMAL is the most appropriate data type for 'Price' because it can accurately represent monetary values, including fractional parts. TEXT is for strings, INTEGER for whole numbers, and BOOLEAN for true/false values.
+
+Question 9
+In designing a database for a university, which of the following would be the most suitable primary key for a 'Students' table? (implementation-based)
+
+Name
+Address
+Student ID
+Course Enrolled
+Explanation
+'Student ID' is the most suitable primary key as it is typically a unique identifier assigned to each student. 'Name' and 'Address' are not guaranteed to be unique, and 'Course Enrolled' could change over time.
+
+Question 10
+You're designing a database for a library. Fill in the blank to complete the SQL statement that creates the 'loans' table, referencing 'book_id' and 'member_id':
+
+CREATE TABLE loans (
+ loan_id INT PRIMARY KEY,
+ book_id INT,
+ member_id INT,
+ FOREIGN KEY (book_id) REFERENCES books(book_id),
+ FOREIGN KEY (member_id) ___________ members(member_id)
+); (implementation-based)
+
+LINK books
+JOIN books
+REFERENCES
+LINK members
+Explanation
+FOREIGN KEY (member_id) REFERENCES members(member_id) is the correct synatx. You need to user REFERENCES to tell the relation between foreign key and the existing table primary key
