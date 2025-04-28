@@ -1,0 +1,100 @@
+hat type of dependency does 4NF primarily address? (factual)
+
+Functional Dependency
+Multivalued Dependency
+Transitive Dependency
+Join Dependency
+Explanation
+4NF is specifically designed to handle multivalued dependencies, where knowing one attribute implies multiple, independent values for another attribute. Functional, transitive, and join dependencies are handled by other normal forms.
+
+Question 2
+True or False: A table in 4NF is always also in BCNF. (trueFalse)
+
+True
+False
+Can't say
+Sometimes true
+Explanation
+True. If a table is in 4NF, it must already satisfy the conditions for BCNF, as 4NF is a stricter normal form.
+
+Question 3
+Which of the following anomalies is 4NF designed to prevent? (factual)
+
+Redundancy due to functional dependencies
+Update anomalies due to transitive dependencies
+Redundancy due to multivalued dependencies
+Insertion anomalies due to partial dependencies
+Explanation
+4NF aims to eliminate redundancy that arises specifically from multivalued dependencies, where the same information is repeated because of independent attributes.
+
+Question 4
+Match the following normal forms with the type of dependency they address:
+1. BCNF  2. 4NF  3. 5NF
+A. Multivalued Dependency B. Join Dependency C. Functional Dependency (application)
+
+1-A, 2-B, 3-C
+1-C, 2-A, 3-B
+1-B, 2-C, 3-A
+1-A, 2-C, 3-B
+Explanation
+BCNF addresses functional dependencies, 4NF addresses multivalued dependencies, and 5NF addresses join dependencies. The correct matching is 1-C, 2-A, 3-B.
+
+Question 5
+Why might a database designer choose *not* to normalize a database to 5NF? (conceptual)
+
+5NF always improves performance.
+5NF eliminates all redundancy.
+The added complexity and join operations might decrease performance.
+5NF is only applicable to small databases.
+Explanation
+While 5NF reduces redundancy, it can lead to increased complexity and the need for more JOIN operations, which can negatively impact query performance in some cases.
+
+Question 6
+In the context of database normalization, what does 'join dependency' refer to? (conceptual)
+
+A dependency involving only one table.
+A dependency that requires joining multiple tables to reconstruct the original table.
+A dependency that can be resolved by creating indexes.
+A dependency between primary keys.
+Explanation
+A join dependency exists when a table can be reconstructed by joining multiple smaller tables, and these smaller tables contain all the information of the original table, which is the core concept behind 5NF.
+
+Question 7
+Consider a table 'Projects(ProjectID, EmployeeID, Task)'. An employee can work on multiple projects, and a project can have multiple employees. Which normal form violation is most likely to occur? (analytical)
+
+First Normal Form (1NF)
+Second Normal Form (2NF)
+Fourth Normal Form (4NF)
+Third Normal Form (3NF)
+Explanation
+A table like 'Projects(ProjectID, EmployeeID, Task)' exhibits a multivalued dependency. An EmployeeID can have multiple ProjectIDs and vice versa, independently of each other, indicating a violation of 4NF.
+
+Question 8
+Consider these SQLite tables: `CREATE TABLE MovieActors (MovieID INTEGER, ActorName TEXT, PRIMARY KEY (MovieID, ActorName)); CREATE TABLE MovieGenres (MovieID INTEGER, Genre TEXT, PRIMARY KEY (MovieID, Genre));`.  What problem are these tables designed to solve? (implementation-based)
+
+Functional dependency in MovieActors
+Join dependency in MovieGenres
+Multivalued dependency in a single Movie table
+Transitive dependency between MovieID and Genre
+Explanation
+These tables decompose a table with MovieID, ActorName, and Genre to address a multivalued dependency. A movie has multiple actors and genres independently, so separating them into two tables solves the 4NF violation.
+
+Question 9
+Fill in the blank: 5NF is also known as ____. (analytical)
+
+Boyce-Codd Normal Form
+Project-Join Normal Form
+Fourth Normal Form
+Domain/Key Normal Form
+Explanation
+5NF is also known as Project-Join Normal Form (PJNF), which reflects its focus on join dependencies and the ability to reconstruct a table from its projections.
+
+Question 10
+Given the following pseudo-code representation of a table decomposition: `Table: AgentCompanyProduct(Agent, Company, Product)  Decomposition: Table1(Agent, Company), Table2(Agent, Product), Table3(Company, Product)`. Under what condition is this decomposition necessary to achieve 5NF? (analytical)
+
+When there is a functional dependency between Agent and Company.
+When the original table cannot be losslessly joined from the decomposed tables.
+When the company determines the product
+When joining the decomposed tables reconstructs the original table without introducing spurious data
+Explanation
+The decomposition is necessary for 5NF when a join dependency exists, meaning the original table can be losslessly reconstructed by joining the smaller tables, and there are no extra records introduced during the join that were not present in the original.
