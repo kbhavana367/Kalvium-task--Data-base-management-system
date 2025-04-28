@@ -1,0 +1,106 @@
+Question 1
+In Boyce-Codd Normal Form (BCNF), what must be true for every dependency A -> B? (conceptual)
+
+A must be a superkey.
+B must be a primary key.
+A must be a candidate key.
+B must be a foreign key.
+Explanation
+BCNF requires that for every dependency A -> B, A must be a candidate key. This ensures that the determinant is a unique identifier for the row.
+
+Question 2
+True or False: A table in BCNF is always in 3NF. (trueFalse)
+
+True
+False
+Cannot be determined
+Only when Primary key is defined
+Explanation
+True. BCNF is a stricter form of 3NF, so a table that satisfies BCNF also satisfies 3NF.
+
+Question 3
+Which of the following anomalies is BCNF designed to prevent? (factual)
+
+Data Duplication
+Inconsistencies
+Anomalies in insertion, deletion and update operations.
+All of the above
+Explanation
+BCNF aims to eliminate redundancy and inconsistencies by ensuring that each attribute is stored only once, which prevents insertion, deletion, and update anomalies.
+
+Question 4
+Match the following terms with their descriptions: (application)
+1. 3NF
+2. BCNF
+A. Every determinant is a candidate key.
+B. Non-key attributes depend directly on the primary key.
+
+1-A, 2-B
+1-B, 2-A
+1-A, 2-A
+1-B, 2-B
+Explanation
+3NF states that non-key attributes depend directly on the primary key, while BCNF requires every determinant to be a candidate key.
+
+Question 5
+In the context of database normalization, when is it most appropriate to consider using BCNF instead of 3NF? (intermediate conceptual)
+
+When dealing with simple tables without overlapping candidate keys
+When non-key attributes depend on other non-key attributes
+When there are overlapping candidate keys in a table
+When the primary key is composite
+Explanation
+BCNF addresses situations where 3NF falls short, particularly when there are overlapping candidate keys, potentially leading to redundancy.
+
+Question 6
+Consider a `Students` table with attributes `StudentID`, `Major`, and `Advisor`. If each major has only one advisor, and each student has only one major, what dependency might violate BCNF if `StudentID` is the primary key? (analytical)
+
+`StudentID -> Major`
+`Major -> Advisor`
+`StudentID -> Advisor`
+`Advisor -> Major`
+Explanation
+If `Major -> Advisor`, and `Major` is not a candidate key, then it violates BCNF. The correct anser is `Major -> Advisor` because `Major` determines `Advisor` and `Major` itself is not a candidate key of the table.
+
+Question 7
+Which of the following is a benefit of applying BCNF to a database schema? (conceptual)
+
+Increased query complexity
+Reduced data redundancy
+Simplified database schema
+Faster data retrieval
+Explanation
+Applying BCNF reduces data redundancy by ensuring that each attribute is stored only once, improving data consistency and reducing storage space.
+
+Question 8
+Given the table `EmployeeSkills (EmployeeID, Skill, TrainingCenter)`, where each employee has multiple skills, and each skill is taught at only one training center. If `EmployeeID, Skill` is the primary key, which of the following pseudo-code snippets represents the correct decomposition to achieve BCNF? (implementation-based)
+
+//Table 1: EmployeeSkills (EmployeeID, Skill)
+//Table 2: SkillTraining (Skill, TrainingCenter)
+//Table 1: EmployeeTraining (EmployeeID, TrainingCenter)
+//Table 2: SkillTraining (Skill, TrainingCenter)
+//Table 1: EmployeeSkills (EmployeeID, Skill, TrainingCenter)
+//Table 1: EmployeeID (EmployeeID, Skill)
+//Table 2: SkillTraining (TrainingCenter)
+Explanation
+The correct decomposition to achieve BCNF involves splitting the table into `EmployeeSkills (EmployeeID, Skill)` and `SkillTraining (Skill, TrainingCenter)`. This eliminates the dependency `Skill -> TrainingCenter` in the original table where `Skill` is not a candidate key.
+
+Question 9
+Consider the following SQLite table creation statement: `CREATE TABLE BookPublisher (BookID INTEGER PRIMARY KEY, PublisherName TEXT, Editor TEXT);`. If the same publisher always uses the same editor, what is the BCNF violation and how would you decompose the table to resolve it? (fill-in-the-blank code)
+
+Violation: PublisherName -> Editor. Decomposition: Book(BookID, PublisherName), PublisherEditor(PublisherName, Editor)
+Violation: Editor -> PublisherName. Decomposition: Book(BookID, Editor), PublisherEditor(PublisherName, Editor)
+Violation: BookID -> Editor. Decomposition: Book(BookID, PublisherName), PublisherEditor(PublisherName, Editor)
+Violation: BookID -> PublisherName. Decomposition: Book(BookID, Editor), PublisherEditor(PublisherName, Editor)
+Explanation
+The violation is `PublisherName -> Editor` because `PublisherName` determines `Editor`, but `PublisherName` is not a candidate key. Decomposing the table into `Book(BookID, PublisherName)` and `PublisherEditor(PublisherName, Editor)` resolves this.
+
+Question 10
+You have a table `Courses(CourseID, Instructor, Room)`. An instructor teaches only one course, and a course is taught in only one room. However, the same instructor always teaches in the same room. If CourseID is the primary key, which statement is most accurate? (advanced application)
+
+The table is already in BCNF because CourseID determines both Instructor and Room.
+The table violates BCNF due to the transitive dependency CourseID -> Instructor -> Room.
+The table violates BCNF because Instructor -> Room, and Instructor is not a candidate key.
+The table violates BCNF due to redundancy, but can be resolved without decomposition.
+Explanation
+The table violates BCNF because `Instructor -> Room`, and `Instructor` is not a candidate key. This dependency exists independently of the primary key and causes redundancy.
