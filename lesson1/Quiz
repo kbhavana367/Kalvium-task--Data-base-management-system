@@ -1,0 +1,109 @@
+Question 1
+What is the primary goal of normalization in databases? (factual)
+
+1. To reduce data redundancy and improve data integrity
+2. To increase the complexity of database queries
+3. To maximize storage space utilization regardless of data duplication
+4. To limit the number of tables in a database
+Explanation
+Normalization aims to minimize data duplication (redundancy) and ensure data is accurate and consistent (integrity). The other options are contrary to the purpose of normalization.
+
+Question 2
+Which of the following is a core principle of First Normal Form (1NF)? (factual)
+
+1. Each column should contain only atomic values.
+2. Eliminating all foreign keys
+3. Each table must have a primary key and only one column.
+4. All tables must have at least three columns
+Explanation
+1NF mandates that each column in a table contains only atomic (indivisible) values, eliminating repeating groups. The other options don't align with the principles of 1NF.
+
+Question 3
+True or False: A table is in 1NF if it contains repeating groups of data within a single column. (trueFalse)
+
+1. False
+2. True
+3. Not Applicable
+4. Partially True
+Explanation
+The presence of repeating groups violates 1NF. 1NF requires eliminating repeating groups to achieve atomic values in each column. Therefore, the statement is false.
+
+Question 4
+Which scenario demonstrates a violation of 1NF? (application)
+
+1. A table where each column stores a single, indivisible piece of data.
+2. A table with multiple columns, each having single values
+3. A table where one column stores a comma-separated list of product names purchased in a single order.
+4. A table where one column stores a single product names purchased in a single order.
+Explanation
+Storing a comma-separated list of product names in a single column is a repeating group, violating the atomic value principle of 1NF. The other options follow the 1NF rule.
+
+Question 5
+Match the following 1NF concept with its description:
+1. Atomic Value
+2. Repeating Group
+3. Normalization
+A. A process to reduce redundancy and improve data integrity
+B. A column containing multiple values
+C. An indivisible value
+
+1. 1-C, 2-B, 3-A
+2. 1-A, 2-C, 3-B
+3. 1-B, 2-A, 3-C
+4. 1-C, 2-A, 3-B
+Explanation
+Atomic Value is an indivisible value (C), Repeating Group is a column containing multiple values (B), and Normalization reduces redundancy and improves data integrity (A).
+
+Question 6
+Why is it important to eliminate repeating groups when applying 1NF to a database table? (conceptual)
+
+1. To reduce the number of tables in the database.
+2. To ensure each column contains only atomic values and simplify data management.
+3. To improve database aesthetics.
+4. To increase data redundancy.
+Explanation
+Eliminating repeating groups ensures each column contains only atomic values, making the database easier to query, update, and maintain. Options 1 and 4 are contrary to normalization principles, and Option 3 is irrelevant.
+
+Question 7
+Consider a 'Customers' table with columns 'CustomerID', 'Name', and 'PhoneNumbers'. The 'PhoneNumbers' column stores multiple phone numbers separated by commas. What is the first step to normalize this table to 1NF? (application)
+
+1. Create a new table called 'CustomerPhoneNumbers' with columns 'CustomerID' and 'PhoneNumber'.
+2. Remove the 'PhoneNumbers' column completely.
+3. Split the 'Customers' table into three tables with the same schema.
+4. Add a constraint to the 'PhoneNumbers' column to allow only one phone number.
+Explanation
+The first step is to create a separate table to store the phone numbers and link it back to the 'Customers' table using the CustomerID as a foreign key. This removes the repeating group. Options 2, 3, and 4 are incorrect strategies.
+
+Question 8
+Given the following unnormalized data in a table 'Orders':
+| OrderID | CustomerID | Products |
+|---------|------------|----------|
+| 1       | 101        | A, B, C  |
+What SQL operation is necessary to transform this data to 1NF? (implementation-based)
+
+1. Create a new table 'OrderProducts' with columns 'OrderID' and 'ProductID', and populate it by splitting the 'Products' column.
+2. Add more columns to the 'Orders' table for each product.
+3. Delete the 'Products' column.
+4. Concatenate all products into a single string.
+Explanation
+The correct approach is to create a new table that links orders to individual products, thereby eliminating the repeating group in the 'Products' column. The other options do not achieve 1NF.
+
+Question 9
+Fill in the blank: To link the 'Students' table and the 'Courses' table after applying 1NF, you need to create a __________ table with foreign keys referencing both tables. (analytical)
+
+1. Junction/linking
+2. Primary
+3. Secondary
+4. View
+Explanation
+A junction (or linking) table is used to establish a many-to-many relationship between two tables by holding foreign keys that reference the primary keys of those tables. This is essential for implementing 1NF correctly.
+
+Question 10
+Consider a database with tables 'Authors' (AuthorID, Name) and 'Books' (BookID, Title, AuthorIDs). The 'AuthorIDs' column in 'Books' contains a comma-separated list of AuthorIDs. Write a pseudo-code algorithm to transform this database to 1NF. (implementation-based)
+
+1. CREATE TABLE BookAuthors (BookID, AuthorID); FOR each book: split AuthorIDs into individual AuthorID values; INSERT each AuthorID with BookID into BookAuthors;
+2. ALTER TABLE Books ADD AuthorID INTEGER;
+3. CREATE VIEW BookAuthors AS SELECT BookID, AuthorIDs FROM Books;
+4. DROP TABLE Books;
+Explanation
+The correct algorithm creates a linking table 'BookAuthors' and populates it by iterating through each book, splitting the 'AuthorIDs' string, and inserting individual AuthorID and BookID pairs into the new table, correctly addressing the 1NF violation. The other options don't resolve the repeating groups.
