@@ -1,1 +1,99 @@
+Question 1
+Which of the following is NOT a fundamental SQL command? (factual)
 
+1. SELECT
+2. CREATE
+3. UPDATE
+4. DELETE
+Explanation
+CREATE is a DDL command, not a fundamental command for data manipulation like SELECT, UPDATE, and DELETE, which are DML commands.
+
+Question 2
+True or False: SQL is an industry-standard language supported by almost all RDBMS. (trueFalse)
+
+1. True
+2. False
+3. sometimes
+4. Depends on RDBMS
+Explanation
+SQL is indeed the standard language for interacting with relational databases, and most RDBMS support it.
+
+Question 3
+Which SQL statement is used to retrieve data from a database? (factual)
+
+1. INSERT
+2. UPDATE
+3. SELECT
+4. DELETE
+Explanation
+The SELECT statement is specifically designed for retrieving data from one or more tables in a database.
+
+Question 4
+Match the SQL command to its function: (conceptual)
+
+1. SELECT - Modifies existing data
+2. INSERT - Removes data
+3. UPDATE - Adds new data
+4. DELETE - Retrieves data
+Explanation
+The UPDATE command is used to modify existing data within a database table.
+
+Question 5
+Which part of the SELECT statement is used to filter data based on a condition? (conceptual)
+
+1. FROM
+2. WHERE
+3. ORDER BY
+4. GROUP BY
+Explanation
+The WHERE clause in a SELECT statement is used to specify a condition that filters the rows to be retrieved.
+
+Question 6
+You need to correct the city of a customer with CustomerID 456 to 'Austin'. Which SQL statement should you use? (application)
+
+1. INSERT INTO Customers (City) VALUES ('Austin') WHERE CustomerID = 456;
+2. UPDATE Customers SET City = 'Austin' WHERE CustomerID = 456;
+3. DELETE FROM Customers WHERE CustomerID = 456;
+4. SELECT * FROM Customers WHERE City = 'Austin';
+Explanation
+The UPDATE statement, along with the SET clause to specify the column to update and the WHERE clause to filter by CustomerID, is the correct way to modify existing data.
+
+Question 7
+What type of JOIN returns only the rows that have matching values in both tables? (conceptual)
+
+1. LEFT JOIN
+2. RIGHT JOIN
+3. FULL OUTER JOIN
+4. INNER JOIN
+Explanation
+An INNER JOIN returns only the rows where there is a match in both tables based on the join condition.
+
+Question 8
+Given a table `Products` with columns `ProductID`, `Name`, and `Category`, write a pseudo-SQL query to retrieve the names of all products in the 'Electronics' category. (implementation-based)
+
+1. SELECT ProductName FROM Products WHERE Category = 'Electronics';
+2. DISPLAY Name FROM Products IF Category EQUALS Electronics
+3. GET Name FROM Products FILTER Category IS Electronics
+4. FIND Name IN Products WITH Category AS Electronics
+Explanation
+The correct SQL syntax for retrieving the 'Name' column from the 'Products' table, filtering by 'Category' equal to 'Electronics', is using the SELECT statement with a WHERE clause. ProductName is used instead of Name to make the answer not so direct.
+
+Question 9
+You have two tables: `Employees` (EmployeeID, Name, DepartmentID) and `Departments` (DepartmentID, DepartmentName). Fill in the blank to complete the SQL query that retrieves the name of each employee along with their department name: SELECT Employees.Name, Departments.DepartmentName FROM Employees _____ Departments ON Employees.DepartmentID = Departments.DepartmentID; (fill-in-the-blank)
+
+1. LEFT JOIN
+2. FULL JOIN
+3. INNER JOIN
+4. RIGHT JOIN
+Explanation
+An INNER JOIN is appropriate here because you only want to retrieve employee and department name combinations where there is a matching DepartmentID in both tables.
+
+Question 10
+In an e-commerce database, you have tables `Customers` (CustomerID, Name, City) and `Orders` (OrderID, CustomerID, OrderDate). How would you retrieve a list of all customers who have placed an order, including their name, city, and the date of their order? (advanced application)
+
+1. SELECT Customers.Name, Customers.City, Orders.OrderDate FROM Customers WHERE Customers.CustomerID = Orders.CustomerID;
+2. SELECT Customers.Name, Customers.City, Orders.OrderDate FROM Customers FULL JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
+3. SELECT Customers.Name, Customers.City, Orders.OrderDate FROM Customers INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
+4. SELECT Customers.Name, Customers.City, Orders.OrderDate FROM Customers LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
+Explanation
+The INNER JOIN is the most appropriate because it only returns customers who have placed orders, linking the Customers and Orders tables through the CustomerID. Option 1 has incorrect syntax.
