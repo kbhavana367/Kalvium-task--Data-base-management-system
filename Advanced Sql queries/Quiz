@@ -1,1 +1,112 @@
+Question 1
+What is the primary function of SQL? (factual)
 
+To manage and manipulate data in relational databases.
+To design the user interface of a website.
+To create operating systems.
+To develop mobile applications.
+Explanation
+SQL (Structured Query Language) is specifically designed for managing and manipulating data within relational database management systems (RDBMS).
+
+Question 2
+Which SQL command is used to retrieve data from a database? (factual)
+
+INSERT
+UPDATE
+SELECT
+DELETE
+Explanation
+The SELECT command is used to retrieve data from one or more tables in a database. The other commands are for inserting, updating, and deleting data, respectively.
+
+Question 3
+True or False: Triggers are executed manually by the user. (trueFalse)
+
+True
+False
+Explanation
+False. Triggers are automatically executed in response to certain events on a table, not manually.
+
+Question 4
+Match the SQL command with its function:
+1. INSERT
+2. UPDATE
+3. DELETE
+
+A. Modifies existing data
+B. Adds new data
+C. Removes data
+(conceptual)
+
+1-A, 2-B, 3-C
+1-B, 2-A, 3-C
+1-C, 2-A, 3-B
+1-B, 2-C, 3-A
+Explanation
+The correct matching is: INSERT (B) adds new data, UPDATE (A) modifies existing data, and DELETE (C) removes data.
+
+Question 5
+You need to retrieve customer names and their corresponding order IDs from two tables, `Customers` and `Orders`. Which type of JOIN is most suitable if you only want to see customers who have placed orders? (application)
+
+LEFT JOIN
+RIGHT JOIN
+FULL OUTER JOIN
+INNER JOIN
+Explanation
+INNER JOIN returns only the rows that have matching values in both tables, meaning it will only show customers who have orders in the `Orders` table.
+
+Question 6
+Which of the following is a benefit of using Stored Procedures? (conceptual)
+
+They automatically update table schemas.
+They are precompiled for faster execution and reusability.
+They can only be executed once.
+They replace the need for SQL entirely.
+Explanation
+Stored procedures are precompiled sets of SQL statements, which makes them more efficient and reusable compared to running individual queries repeatedly.
+
+Question 7
+A trigger is best described as: (conceptual)
+
+A function that calculates values in SQL.
+A stored procedure that executes automatically in response to certain events.
+A way to manually back up a database.
+A tool for designing database schemas.
+Explanation
+Triggers are special types of stored procedures that automatically execute when specific events (like INSERT, UPDATE, or DELETE) occur on a table.
+
+Question 8
+Consider the following pseudo-code for a trigger:
+
+```
+TRIGGER on 'Orders' AFTER INSERT:
+  UPDATE 'Products' SET Stock = Stock - NEW.Quantity
+  WHERE ProductID = NEW.ProductID
+```
+What is the purpose of this trigger? (implementation-based)
+
+To increase the stock level of products when a new order is placed.
+To prevent new orders from being created.
+To update the stock level of products when a new order is placed.
+To delete products from the database.
+Explanation
+The trigger updates the stock level of products by subtracting the quantity ordered from the current stock when a new order is placed.
+
+Question 9
+Fill in the blank: Stored procedures improve ________ by precompiling SQL statements, and ________ them for reuse. (advanced application)
+
+security, limiting
+performance, storing
+readability, simplifying
+complexity, hiding
+Explanation
+Stored procedures improve performance by precompiling SQL statements and storing them for reuse. This avoids recompiling the same queries every time, thus improving efficiency.
+
+Question 10
+You want to create a trigger that logs all DELETE operations on the `Employees` table into an `EmployeeAudit` table. Which event should the trigger be associated with? (implementation-based)
+
+AFTER INSERT
+BEFORE UPDATE
+AFTER DELETE
+BEFORE SELECT
+Explanation
+To log DELETE operations, the trigger should be associated with the AFTER DELETE event, ensuring that the logging occurs after the deletion is complete.
