@@ -1,0 +1,136 @@
+Question 1
+Which normal form does 3NF build upon? (factual)
+
+1NF
+2NF
+BCNF
+4NF
+Explanation
+3NF builds upon 2NF by addressing transitive dependencies. 1NF only deals with atomicity, BCNF and 4NF are higher normal forms.
+
+Question 2
+A table is in 3NF if it is in 2NF and has no transitive dependencies. What is a transitive dependency? (conceptual)
+
+A dependency between two non-key attributes.
+A dependency between a key and a non-key attribute.
+A dependency between all attributes in a table.
+A dependency where a non-key attribute depends on another non-key attribute, which depends on the primary key.
+Explanation
+Transitive dependency means a non-key attribute depends on another non-key attribute, which in turn depends on the primary key. This is the core concept 3NF addresses.
+
+Question 3
+True or False: A table in 3NF will always have less redundancy than the same data stored in 1NF. (trueFalse)
+
+True
+False
+It depends on the data
+Only if the primary key is an integer
+Explanation
+3NF aims to reduce redundancy by eliminating transitive dependencies, which inherently leads to less redundancy compared to lower normal forms like 1NF. 1NF removes repeating groups of data, but does not deal with partial or transitive dependencies, leaving possible redundancy.
+
+Question 4
+Match the following terms to their descriptions:
+1. Redundancy
+2. Update Anomaly
+3. Insertion Anomaly
+4. Deletion Anomaly
+A. Losing information when deleting a record
+B. Inconsistency due to partial updates
+C. Difficulty adding new data without related information
+D. Repeated storage of the same data (application)
+
+1-D, 2-B, 3-C, 4-A
+1-A, 2-C, 3-D, 4-B
+1-B, 2-D, 3-A, 4-C
+1-C, 2-A, 3-B, 4-D
+Explanation
+Redundancy is the repeated storage of the same data. An Update Anomaly arises when updates are not applied consistently across all instances of redundant data. An Insertion Anomaly happens when you cannot add new data without related information. A Deletion Anomaly is losing information when deleting a record.
+
+Question 5
+Which of the following scenarios would benefit MOST from applying 3NF? (application)
+
+A table storing user login credentials (username and password).
+A table storing a log of website visits, where each visit is a unique event.
+A table storing product information, where product category depends on product ID.
+A table storing customer orders, where customer address depends on customer ID.
+Explanation
+Customer address depending on customer ID represents a transitive dependency. Storing the address repeatedly with each order leads to redundancy and update anomalies. Applying 3NF would involve creating a separate table for customer addresses.
+
+Question 6
+Consider a table `Orders(OrderID, CustomerID, CustomerName, CustomerCity, OrderDate)`. Which dependency violates 3NF? (conceptual)
+
+OrderID -> OrderDate
+CustomerID -> CustomerName, CustomerCity
+OrderID -> CustomerID
+CustomerName -> CustomerCity
+Explanation
+The dependency `CustomerID -> CustomerName, CustomerCity` is a transitive dependency. `CustomerName` and `CustomerCity` are non-key attributes that depend on `CustomerID`, another non-key attribute, violating 3NF.
+
+Question 7
+What is the primary trade-off when normalizing a database to 3NF? (conceptual)
+
+Increased storage space
+Reduced data consistency
+Increased query complexity due to more joins
+Decreased data integrity
+Explanation
+While 3NF offers benefits like reduced redundancy and improved data consistency, a primary trade-off is the increased complexity of queries due to the need for more JOIN operations to retrieve data from multiple tables.
+
+Question 8
+Given tables `Students(StudentID, StudentName, MajorID)` and `Majors(MajorID, MajorName, DepartmentID)`, and `Departments(DepartmentID, DepartmentName)`. Write psuedocode for a query to retrieve the name of all students and their department name.(implementation-based)
+
+```psuedocode
+SELECT StudentName, DepartmentName
+FROM Students
+JOIN Majors ON Students.MajorID = Majors.MajorID;
+```
+```psuedocode
+SELECT StudentName, DepartmentName
+FROM Students
+JOIN Majors ON Students.MajorID = Majors.MajorID
+JOIN Departments ON Majors.DepartmentID = Departments.DepartmentID;
+```
+```psuedocode
+SELECT StudentName, DepartmentName
+FROM Students
+LEFT JOIN Majors ON Students.MajorID = Majors.MajorID
+LEFT JOIN Departments ON Majors.DepartmentID = Departments.DepartmentID;
+```
+```psuedocode
+SELECT StudentName, DepartmentName
+FROM Students, Majors, Departments
+WHERE Students.MajorID = Majors.MajorID;
+```
+Explanation
+This query correctly joins all three tables to retrieve the StudentName from the Students table and the DepartmentName from the Departments table, using the MajorID and DepartmentID as the linking keys. The other options either miss the join to the Departments table, or use a less precise join type which might give unexpected results.
+
+Question 9
+Consider the following SQLite tables:
+`CREATE TABLE Authors (AuthorID INTEGER PRIMARY KEY, AuthorName TEXT, Nationality TEXT);`
+`CREATE TABLE Books (BookID INTEGER PRIMARY KEY, BookTitle TEXT, AuthorID INTEGER, Genre TEXT);`
+Which SQL statement would efficiently retrieve all authors who are from 'USA' and have written a book with the genre 'Science Fiction'? (implementation-based)
+
+```sqlite
+SELECT DISTINCT AuthorName FROM Authors WHERE Nationality = 'USA' AND AuthorID IN (SELECT AuthorID FROM Books WHERE Genre = 'Science Fiction');
+```
+```sqlite
+SELECT AuthorName FROM Authors, Books WHERE Authors.Nationality = 'USA' AND Books.Genre = 'Science Fiction';
+```
+```sqlite
+SELECT AuthorName FROM Authors INNER JOIN Books ON Authors.AuthorID = Books.AuthorID WHERE Authors.Nationality = 'USA' OR Books.Genre = 'Science Fiction';
+```
+```sqlite
+SELECT AuthorName FROM Authors WHERE Nationality = 'USA' EXCEPT SELECT AuthorName FROM Authors WHERE AuthorID NOT IN (SELECT AuthorID FROM Books WHERE Genre = 'Science Fiction');
+```
+Explanation
+This query uses a subquery to first identify all AuthorIDs that have written a 'Science Fiction' book, and then selects the AuthorName from the Authors table where the Nationality is 'USA' and the AuthorID is in the result of the subquery. The DISTINCT keyword ensures that each author is only listed once even if they have multiple science fiction books. The other options will either include wrong authors, use incorrect JOINS, or will be too long.
+
+Question 10
+Fill in the blank: In the context of database normalization, __________ refers to a situation where a non-key attribute depends on another non-key attribute, which in turn depends on the primary key. (conceptual)
+
+Partial Dependency
+Functional Dependency
+Transitive Dependency
+Multivalued Dependency
+Explanation
+Transitive Dependency is precisely the type of dependency described, where a non-key attribute relies on another non-key attribute, which itself depends on the primary key. This concept is central to understanding and applying 3NF.
